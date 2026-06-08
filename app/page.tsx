@@ -64,16 +64,15 @@ export default async function Home() {
                   ⭐ {dorama.nota_ana}/10
                 </span>
               </div>
-
+<div className="flex justify-between mt-4 text-sm text-gray-500">
+  <span>📺 {dorama.episodios} eps</span>
+  <span>📅 {dorama.ano}</span>
+</div>
 <div className="mt-2">
   <span className="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-semibold">
     {dorama.genero}
   </span>
 </div>
-
-              <p className="text-gray-500 text-sm mt-3">
-                📅 {dorama.ano}
-              </p>
 
             </div>
     </div>
