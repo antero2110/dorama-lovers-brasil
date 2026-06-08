@@ -30,11 +30,13 @@ export default async function Home() {
 
       {/* Cards */}
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
-        {doramas?.map((dorama) => (
-          <div
-            key={dorama.id}
-            className="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 w-72"
-          >
+{doramas?.map((dorama) => (
+  <Link
+    key={dorama.id}
+    href={`/dorama/${dorama.id}`}
+    className="block"
+  >
+    <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 w-72 cursor-pointer">
             <img
               src={dorama.capa_url}
               alt={dorama.titulo}
@@ -63,15 +65,10 @@ export default async function Home() {
                 📅 {dorama.ano}
               </p>
 
-<Link
-  href={`/dorama/${dorama.id}`}
-  className="block w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-xl transition text-center"
->
-  Ver detalhes
-</Link>
             </div>
-          </div>
-        ))}
+    </div>
+  </Link>
+))}
       </div>
     </main>
   );
