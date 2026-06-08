@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { supabase } from "@/src/lib/supabase";
 
 export default async function Home() {
@@ -28,22 +29,25 @@ export default async function Home() {
       </div>
 
       {/* Cards */}
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
         {doramas?.map((dorama) => (
           <div
             key={dorama.id}
-            className="bg-white rounded-3xl shadow-lg overflow-hidden hover:scale-105 hover:shadow-2xl transition-all duration-300"
+            className="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 w-72"
           >
             <img
               src={dorama.capa_url}
               alt={dorama.titulo}
-              className="w-full h-96 object-cover"
+              className="w-full h-96 object-cover hover:scale-105 transition duration-500 cursor-pointer"
             />
 
             <div className="p-4">
               <h2 className="font-bold text-xl text-gray-800 line-clamp-2">
                 {dorama.titulo}
               </h2>
+			  <p className="text-gray-500 text-sm mt-2 line-clamp-3">
+  {dorama.sinopse}
+</p>
 
               <div className="flex items-center mt-2">
                 <span className="text-yellow-500 font-bold">
@@ -59,9 +63,11 @@ export default async function Home() {
                 📅 {dorama.ano}
               </p>
 
-              <button className="w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-xl transition">
-                Ver detalhes
-              </button>
+<Link href={`/dorama/${dorama.id}`}>
+  <button className="w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-xl transition">
+    Ver detalhes
+  </button>
+</Link>
             </div>
           </div>
         ))}
