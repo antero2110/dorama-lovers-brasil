@@ -11,42 +11,42 @@ export default function AdminPage() {
 
           <input
             placeholder="Título"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
-          <textarea
-            placeholder="Sinopse"
-            className="w-full p-3 border rounded-xl"
-          />
+<textarea
+  placeholder="Sinopse"
+  className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
+/>
 
           <input
             placeholder="Ano"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
           <input
             placeholder="Episódios"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
           <input
             placeholder="Gênero"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
           <input
             placeholder="Nota"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
           <input
             placeholder="Comentário"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
           <input
             placeholder="URL da capa"
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3 border rounded-xl text-gray-800 placeholder:text-gray-400"
           />
 
           <button
