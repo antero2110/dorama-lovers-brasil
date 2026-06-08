@@ -63,10 +63,11 @@ export default async function Home() {
                 📅 {dorama.ano}
               </p>
 
-<Link href={`/dorama/${dorama.id}`}>
-  <button className="w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-xl transition">
-    Ver detalhes
-  </button>
+<Link
+  href={`/dorama/${dorama.id}`}
+  className="block w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-xl transition text-center"
+>
+  Ver detalhes
 </Link>
             </div>
           </div>
