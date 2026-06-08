@@ -21,11 +21,11 @@ export default async function Home() {
 
       {/* Busca */}
       <div className="max-w-4xl mx-auto px-4 mb-10">
-        <input
-          type="text"
-          placeholder="🔍 Pesquisar dorama..."
-          className="w-full p-4 rounded-2xl border-2 border-pink-200 shadow-md focus:outline-none focus:border-pink-500"
-        />
+<input
+  type="text"
+  placeholder="🔍 Pesquisar dorama..."
+  className="w-full p-4 rounded-2xl border-2 border-pink-200 shadow-md focus:outline-none focus:border-pink-500 text-gray-800 placeholder:text-gray-400"
+ />
       </div>
 
       {/* Cards */}

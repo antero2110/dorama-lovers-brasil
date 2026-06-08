@@ -33,11 +33,11 @@ export default async function DoramaPage({
 
             <div>
 
-              <h1 className="text-5xl font-bold text-pink-500">
+              <h1 className="text-5xl font-bold text-pink-600">
                 {dorama.titulo}
               </h1>
 
-              <div className="mt-6 text-lg">
+              <div className="mt-6 text-lg text-gray-800">
                 <p>
                   <strong>📅 Ano:</strong> {dorama.ano}
                 </p>
@@ -55,11 +55,11 @@ export default async function DoramaPage({
                 ⭐⭐⭐⭐⭐
               </div>
 
-              <div className="mt-4 text-xl">
+              <div className="mt-4 text-xl text-gray-800">
                 <strong>Nota da Ana:</strong> {dorama.nota_ana}/10
               </div>
 
-              <div className="mt-3 italic text-gray-600">
+              <div className="mt-3 italic text-gray-700">
                 "{dorama.comentario_ana}"
               </div>
 
@@ -72,7 +72,7 @@ export default async function DoramaPage({
               📖 Sinopse
             </h2>
 
-            <p className="mt-4 text-lg">
+            <p className="mt-4 text-lg text-gray-800">
               {dorama.sinopse}
             </p>
           </div>
