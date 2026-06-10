@@ -12,37 +12,59 @@ export default function AdminPage() {
   const [nota, setNota] = useState("");
   const [comentario, setComentario] = useState("");
   const [capaUrl, setCapaUrl] = useState("");
+const [arquivo, setArquivo] = useState<File | null>(null);
+async function cadastrarDorama(e: React.FormEvent) {
+  e.preventDefault();
 
-  async function cadastrarDorama(e: React.FormEvent) {
-    e.preventDefault();
+  let urlImagem = capaUrl;
 
-    const { error } = await supabase.from("doramas").insert({
-      titulo,
-      sinopse,
-      ano: Number(ano),
-      episodios: Number(episodios),
-      genero,
-      nota_ana: Number(nota),
-      comentario_ana: comentario,
-      capa_url: capaUrl,
-    });
+  if (arquivo) {
+    const nomeArquivo = `${Date.now()}-${arquivo.name}`;
 
-    if (error) {
-      alert("Erro: " + error.message);
+    const { error: uploadError } = await supabase.storage
+      .from("capas")
+      .upload(nomeArquivo, arquivo);
+
+    if (uploadError) {
+      alert("Erro upload: " + uploadError.message);
       return;
     }
 
-    alert("Dorama cadastrado com sucesso!");
+    const { data } = supabase.storage
+      .from("capas")
+      .getPublicUrl(nomeArquivo);
 
-    setTitulo("");
-    setSinopse("");
-    setAno("");
-    setEpisodios("");
-    setGenero("");
-    setNota("");
-    setComentario("");
-    setCapaUrl("");
+    urlImagem = data.publicUrl;
   }
+
+  const { error } = await supabase.from("doramas").insert({
+    titulo,
+    sinopse,
+    ano: Number(ano),
+    episodios: Number(episodios),
+    genero,
+    nota_ana: Number(nota),
+    comentario_ana: comentario,
+    capa_url: urlImagem,
+  });
+
+  if (error) {
+    alert("Erro: " + error.message);
+    return;
+  }
+
+  alert("Dorama cadastrado com sucesso!");
+
+  setTitulo("");
+  setSinopse("");
+  setAno("");
+  setEpisodios("");
+  setGenero("");
+  setNota("");
+  setComentario("");
+  setCapaUrl("");
+  setArquivo(null);
+}
 
   return (
     <main className="min-h-screen bg-pink-50 p-8">
@@ -103,12 +125,20 @@ export default function AdminPage() {
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
-          <input
-            value={capaUrl}
-            onChange={(e) => setCapaUrl(e.target.value)}
-            placeholder="URL da capa"
-            className="w-full p-3 border rounded-xl text-gray-800"
-          />
+<div>
+  <label className="block mb-2 font-medium text-gray-700">
+    📷 Capa do Dorama
+  </label>
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) =>
+      setArquivo(e.target.files?.[0] || null)
+    }
+    className="w-full p-3 border rounded-xl text-gray-800"
+  />
+</div>
 
           <button
             type="submit"
