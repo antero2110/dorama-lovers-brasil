@@ -1,55 +1,9 @@
+
 "use client";
 
 import { useState } from "react";
-
-export default function AdminPage() {
-  const [logado, setLogado] = useState(false);
-  const [senha, setSenha] = useState("");
-
-  function entrar() {
-    if (senha === "ANA2026") {
-      setLogado(true);
-    } else {
-      alert("Senha incorreta");
-    }
-  }
-
-  if (!logado) {
-    return (
-      <main className="min-h-screen flex items-center justify-center bg-pink-50">
-        <div className="bg-white p-8 rounded-3xl shadow-xl w-96">
-          <h1 className="text-3xl font-bold text-pink-600 mb-6">
-            🔒 Área Administrativa
-          </h1>
-
-          <input
-            type="password"
-            placeholder="Digite a senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            className="w-full p-3 border rounded-xl text-gray-800"
-          />
-
-          <button
-            onClick={entrar}
-            className="w-full mt-4 bg-pink-500 text-white p-3 rounded-xl"
-          >
-            Entrar
-          </button>
-        </div>
-      </main>
-    );
-  }
-
-  return (
-    <>
-      {/* TODO: seu formulário atual fica aqui */}
-    </>
-  );
-}
-"use client";
-
-import { useState } from "react";
+const [logado, setLogado] = useState(false);
+const [senha, setSenha] = useState("");
 import { supabase } from "@/src/lib/supabase";
 
 export default function AdminPage() {
@@ -64,7 +18,13 @@ export default function AdminPage() {
 const [arquivo, setArquivo] = useState<File | null>(null);
 async function cadastrarDorama(e: React.FormEvent) {
   e.preventDefault();
-
+function entrar() {
+  if (senha === "21232900@Maite") {
+    setLogado(true);
+  } else {
+    alert("Senha incorreta");
+  }
+}
   let urlImagem = capaUrl;
 
   if (arquivo) {
@@ -114,7 +74,34 @@ async function cadastrarDorama(e: React.FormEvent) {
   setCapaUrl("");
   setArquivo(null);
 }
+if (!logado) {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-pink-50">
+      <div className="bg-white p-8 rounded-3xl shadow-xl w-full max-w-md">
 
+        <h1 className="text-3xl font-bold text-pink-600 mb-6 text-center">
+          🔒 Área Administrativa
+        </h1>
+
+        <input
+          type="password"
+          placeholder="Digite a senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          className="w-full p-3 border rounded-xl text-gray-800"
+        />
+
+        <button
+          onClick={entrar}
+          className="w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-xl"
+        >
+          Entrar
+        </button>
+
+      </div>
+    </main>
+  );
+}
   return (
     <main className="min-h-screen bg-pink-50 p-8">
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
