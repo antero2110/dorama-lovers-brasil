@@ -2,11 +2,11 @@
 "use client";
 
 import { useState } from "react";
-const [logado, setLogado] = useState(false);
-const [senha, setSenha] = useState("");
 import { supabase } from "@/src/lib/supabase";
 
 export default function AdminPage() {
+	const [logado, setLogado] = useState(false);
+const [senha, setSenha] = useState("");
   const [titulo, setTitulo] = useState("");
   const [sinopse, setSinopse] = useState("");
   const [ano, setAno] = useState("");
@@ -16,8 +16,6 @@ export default function AdminPage() {
   const [comentario, setComentario] = useState("");
   const [capaUrl, setCapaUrl] = useState("");
 const [arquivo, setArquivo] = useState<File | null>(null);
-async function cadastrarDorama(e: React.FormEvent) {
-  e.preventDefault();
 function entrar() {
   if (senha === "21232900@Maite") {
     setLogado(true);
@@ -25,6 +23,9 @@ function entrar() {
     alert("Senha incorreta");
   }
 }
+async function cadastrarDorama(e: React.FormEvent) {
+  e.preventDefault();
+
   let urlImagem = capaUrl;
 
   if (arquivo) {
