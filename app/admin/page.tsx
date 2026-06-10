@@ -32,6 +32,25 @@ async function carregarDoramas() {
     .from("doramas")
     .select("*")
     .order("id", { ascending: false });
+	async function excluirDorama(id: number) {
+  const confirmar = confirm(
+    "Tem certeza que deseja excluir este dorama?"
+  );
+
+  if (!confirmar) return;
+
+  const { error } = await supabase
+    .from("doramas")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  carregarDoramas();
+}
 
   setDoramas(data || []);
 }
@@ -204,7 +223,37 @@ if (!logado) {
           </button>
 
         </form>
+<div className="mt-10">
+  <h2 className="text-2xl font-bold text-pink-600 mb-4">
+    📚 Doramas Cadastrados
+  </h2>
 
+  <div className="space-y-4">
+    {doramas.map((dorama) => (
+      <div
+        key={dorama.id}
+        className="border rounded-xl p-4 flex justify-between items-center"
+      >
+        <div>
+          <h3 className="font-bold text-gray-800">
+            {dorama.titulo}
+          </h3>
+
+          <p className="text-gray-500">
+            ⭐ {dorama.nota_ana}/10
+          </p>
+        </div>
+
+        <button
+          onClick={() => excluirDorama(dorama.id)}
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
+        >
+          🗑️ Excluir
+        </button>
+      </div>
+    ))}
+  </div>
+</div>
       </div>
     </main>
   );
