@@ -80,6 +80,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
             placeholder="Título"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
@@ -87,6 +88,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={sinopse}
             onChange={(e) => setSinopse(e.target.value)}
             placeholder="Sinopse"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
@@ -94,6 +96,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={ano}
             onChange={(e) => setAno(e.target.value)}
             placeholder="Ano"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
@@ -101,6 +104,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={episodios}
             onChange={(e) => setEpisodios(e.target.value)}
             placeholder="Episódios"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
@@ -108,6 +112,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={genero}
             onChange={(e) => setGenero(e.target.value)}
             placeholder="Gênero"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
@@ -115,6 +120,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={nota}
             onChange={(e) => setNota(e.target.value)}
             placeholder="Nota"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
@@ -122,6 +128,7 @@ async function cadastrarDorama(e: React.FormEvent) {
             value={comentario}
             onChange={(e) => setComentario(e.target.value)}
             placeholder="Comentário"
+			required
             className="w-full p-3 border rounded-xl text-gray-800"
           />
 
