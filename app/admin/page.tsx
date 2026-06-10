@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/src/lib/supabase";
 
 export default function AdminPage() {
@@ -16,12 +16,24 @@ const [senha, setSenha] = useState("");
   const [comentario, setComentario] = useState("");
   const [capaUrl, setCapaUrl] = useState("");
 const [arquivo, setArquivo] = useState<File | null>(null);
+const [doramas, setDoramas] = useState<any[]>([]);
 function entrar() {
   if (senha === "21232900@Maite") {
     setLogado(true);
   } else {
     alert("Senha incorreta");
   }
+}
+useEffect(() => {
+  carregarDoramas();
+}, []);
+async function carregarDoramas() {
+  const { data } = await supabase
+    .from("doramas")
+    .select("*")
+    .order("id", { ascending: false });
+
+  setDoramas(data || []);
 }
 async function cadastrarDorama(e: React.FormEvent) {
   e.preventDefault();
@@ -64,7 +76,7 @@ async function cadastrarDorama(e: React.FormEvent) {
   }
 
   alert("Dorama cadastrado com sucesso!");
-
+carregarDoramas();
   setTitulo("");
   setSinopse("");
   setAno("");
